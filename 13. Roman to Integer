@@ -1,0 +1,29 @@
+# I decided to use a hashmap
+
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        hashmap = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}  # maps Roman numerals to integer values
+        length_of_string = len(s)                       # total number of characters in the input string
+        sum_of_string = 0                               # accumulator to store the final integer result
+        i = 0                                           # index pointer to move along the string
+        
+		while i < length_of_string:						
+            if i < length_of_string - 1 and  hashmap[s[i]] < hashmap[s[i+1]]:      # Ensure we are not at the last character and check for subtractive pattern
+																				# ex: IV (4), IX (9), XL (40), etc.
+                sum_of_string += hashmap[s[i+1]] - hashmap[s[i]]
+                i += 2														# Double jump to keep consistency
+            else:	
+                sum_of_string +=hashmap[s[i]]								# Normal Scenario
+                i +=1
+        return sum_of_string
+
+
+
+
+
+
+ 
+        
+  
+
+        
