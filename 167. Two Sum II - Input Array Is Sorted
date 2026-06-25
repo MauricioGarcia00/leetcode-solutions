@@ -1,0 +1,27 @@
+# Mauricio Garcia
+# This is the classic Two Sum problem, but with the advantage that the array is already sorted.
+# Instead of using a hash map, I used the two-pointer technique, which allows the array to be traversed only once.
+# This problem reinforced how important it is to take advantage of the input's properties rather than applying the same solution everywhere.
+# I also learned that mastering the two-pointer approach here is useful before moving on to more advanced variations, such as 3Sum.
+class Solution:
+    def twoSum(self, numbers: List[int], target: int) -> List[int]:
+
+        #nums = [2,2,1]
+    
+        
+        leftPointer = 0
+        rightPointer = len(numbers) - 1
+
+        while leftPointer < rightPointer: # Making a while loop, iterating over the entire array, this gives a O(n) of time
+
+            currentSum = numbers[rightPointer] + numbers[leftPointer]
+
+            if currentSum > target:
+                rightPointer -= 1
+            elif currentSum < target:
+                leftPointer += 1
+            else:
+                return [leftPointer+1, rightPointer+1]
+
+
+ 
